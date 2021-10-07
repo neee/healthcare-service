@@ -36,15 +36,13 @@ public class Main {
             new PatientInfo("Семен", "Михайлов", LocalDate.of(1982, 1, 16),
                 new HealthInfo(new BigDecimal("36.6"), new BloodPressure(125, 78)))
         );
-
         SendAlertService alertService = new SendAlertServiceImpl();
         MedicalService medicalService = new MedicalServiceImpl(patientInfoRepository, alertService);
 
         //run service
         BloodPressure currentPressure = new BloodPressure(60, 120);
         medicalService.checkBloodPressure(id1, currentPressure);
-
-        BigDecimal currentTemperature = new BigDecimal("37.9");
+        BigDecimal currentTemperature = new BigDecimal("37.8");
         medicalService.checkTemperature(id1, currentTemperature);
     }
 }
