@@ -85,3 +85,39 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
+#игнорировать файлы, находящиеся в папке .idea
+.idea/
+
+# Default ignored files
+/shelf/
+/workspace.xml
+#игнорировать файлы, находящиеся в папке .idea
+.idea/
+#игнорировать файлы, находящиеся в папке .out
+.out/
+#игнорировать файлы Thumbs.db и .DS_Store.
+Thumbs.db
+.DS_Store
+.gitignore
+vcs.xml
+
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Eclipse m2e generated files
+# Eclipse Core
+.project
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+
+
