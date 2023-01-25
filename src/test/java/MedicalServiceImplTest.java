@@ -3,6 +3,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import ru.netology.patient.entity.BloodPressure;
 import ru.netology.patient.entity.HealthInfo;
@@ -16,6 +17,12 @@ import java.math.BigDecimal;
 import java.util.stream.Stream;
 
 public class MedicalServiceImplTest {
+
+//    @Mock
+//    PatientInfoRepository patientInfoRepository;
+//    SendAlertService sendAlertService;
+//    PatientInfo patientInfo;
+//    HealthInfo healthInfo;
 
     PatientInfoRepository patientInfoRepository = Mockito.mock(PatientInfoRepository.class);
     SendAlertService sendAlertService = Mockito.mock(SendAlertService.class);
@@ -40,11 +47,9 @@ public class MedicalServiceImplTest {
         Mockito.when(patientInfo.getId()).thenReturn(id);
 
         medicalService.checkTemperature(id, extremalTemperature);
-        if (id.equals("1111")) {
+        if (normalTemperature.compareTo(extremalTemperature) < 1) {
             Mockito.verify(sendAlertService, Mockito.never()).send(Mockito.anyString());
-        }
-
-        if (id.equals("2222")) {
+        } else {
             Mockito.verify(sendAlertService).send(argumentCaptor.capture());
             Assertions.assertEquals(expectedMassage, argumentCaptor.getValue());
         }
@@ -64,8 +69,7 @@ public class MedicalServiceImplTest {
 
         if (bloodPressure.equals(etalonBloodPressure)) {
             Mockito.verify(sendAlertService, Mockito.never()).send(Mockito.anyString());
-        }
-        if (!bloodPressure.equals(etalonBloodPressure)) {
+        } else {
             Mockito.verify(sendAlertService).send(argumentCaptor.capture());
             Assertions.assertEquals(expectedMassage, argumentCaptor.getValue());
         }
