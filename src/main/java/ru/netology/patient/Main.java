@@ -37,6 +37,8 @@ public class Main {
                 new HealthInfo(new BigDecimal("36.6"), new BloodPressure(125, 78)))
         );
 
+        System.out.println(patientInfoRepository.getById(id1));
+
         SendAlertService alertService = new SendAlertServiceImpl();
         MedicalService medicalService = new MedicalServiceImpl(patientInfoRepository, alertService);
 
@@ -48,3 +50,6 @@ public class Main {
         medicalService.checkTemperature(id1, currentTemperature);
     }
 }
+
+
+
